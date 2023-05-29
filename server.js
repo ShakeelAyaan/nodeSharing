@@ -6,7 +6,7 @@ const path = require('path');
 const cors = require('cors');
 // Cors 
 const corsOptions = {
-  origin: process.env.ALLOWED_CLIENTS.split(',')
+  origin:http://127.0.0.1:3000.split(',')
     // origin: "http://localhost:3000,http://localhost:3300".split(',')
   // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
 }
