@@ -15,7 +15,8 @@ let storage = multer.diskStorage({
 let upload = multer({ storage, limits:{ fileSize: 1000000 * 100 }, }).single('myfile'); //100mb
 
 router.post('/', (req, res) => {
-    upload(req, res, async (err) => {
+  upload(req, res, async (err) => {
+      
       if (err) {
         return res.status(500).send({ error: err.message });
       }
@@ -25,12 +26,13 @@ router.post('/', (req, res) => {
             path: req.file.path,
             size: req.file.size
         });
-        const response = await file.save();
-        res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
-      });
+      const response = await file.save();
+      res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
+  });
+
 });
 
-router.post('/send', async (req, res) => {
+router.post('send', async (req, res) => {
   const { uuid, emailTo, emailFrom, expiresIn } = req.body;
   if(!uuid || !emailTo || !emailFrom) {
       return res.status(422).send({ error: 'All fields are required except expiry.'});
