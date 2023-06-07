@@ -5,12 +5,12 @@ const PORT = process.env.PORT;
 const path = require('path');
 const cors = require('cors');
 // Cors
-const corsOptions = {
-  origin: process.env.ALLOWED_CLIENTS.split(','),
-}
+// const corsOptions = {
+//   origin: process.env.ALLOWED_CLIENTS.split(','),
+// }
 
 app.use(express.json());
-app.use(cors({corsOptions}))
+app.use(cors())
 
 
 app.use(express.static('public'));
