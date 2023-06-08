@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 
 });
 
-router.post('send', async (req, res) => {
+router.post('/send', async (req, res) => {
   const { uuid, emailTo, emailFrom, expiresIn } = req.body;
   if(!uuid || !emailTo || !emailFrom) {
       return res.status(422).send({ error: 'All fields are required except expiry.'});
